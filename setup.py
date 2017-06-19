@@ -7,5 +7,5 @@ setup(name='SwissTool',
       description='CodeRefinery example Python test project',
       author='Jyry Suvilehto',
       url='https://github.com/coderefinery/cr-ide-test/',
-      packages=['swisstool'],
+      packages=['swissutil'],
      )

@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
-from swissutil.test_password_quality import is_acceptable
-from swissutil.test_password_quality import evaluate_string_for_stuff
+from swissutil.password_quality import is_acceptable
+from swissutil.password_quality import evaluate_string_for_stuff
 from swissutil.caesar_cipher import rot15
 
 
-from swissutil.strings import ERROR_MESSAGE, SUCCESS_MESSAGE
+from swissutil.password_quality import ERROR_MESSAGE, SUCCESS_MESSAGE
 
 
 def test_is_acceptable():
@@ -33,7 +33,7 @@ def test_evaluate_string_for_stuff_with_mocking(mocker):
     # a real object a MagicMock object is called.
     # The MagicMock can be e.g. configured to return a value when called
     # to isolate a function from another one.
-    mocked_function = mocker.patch("swissutil.strings.is_acceptable")
+    mocked_function = mocker.patch("swissutil.password_quality.is_acceptable")
     mocked_function.return_value = True
     assert evaluate_string_for_stuff("not_used") == 0
     assert mocked_function.called_once_with("not_used")
