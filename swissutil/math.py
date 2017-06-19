@@ -8,7 +8,7 @@ def factorial(n):
 
            Parameters
            ----------
-           n: integer
+           n: a nonnegative integer
 
 
            Returns
@@ -16,6 +16,8 @@ def factorial(n):
            int
                n! for non-negative numbers n
     """
-    if n <= 0:
+    if n < 0:
+        raise ValueError("negative integers not supported")
+    if n == 0:
         return 1
     return n * factorial(n-1)
