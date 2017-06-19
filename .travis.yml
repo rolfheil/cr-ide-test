@@ -10,14 +10,13 @@ python:
   - 3.5
 
 install:
-  # general requirements
   - pip install -r requirements.txt
   - pip install pytest-cov python-coveralls
 
 script:
   - if [[ $TRAVIS_PYTHON_VERSION == 2.7 ]];
-    then py.test -vv example.py --cov example;
-    else py.test -vv example.py;
+    then py.test -vv --cov swisstool;
+    else py.test -vv;
     fi
 
 after_success:
