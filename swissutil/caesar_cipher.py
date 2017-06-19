@@ -1,5 +1,25 @@
+# -*- coding: utf-8 -*-
+
+"""This module implements various Caesar ciphers.
+
+The cipher is a simple replacement of each letter with another one precisely N
+steps.
+
+It should not be considered secure unless time-traveling to the year 50 B.C. or
+earlier. It is suitable for keeping people from accidentally reading
+spoilers etc.
+
+The most famous rotating cipher is of course ROT-13. Because there are 26
+alphabets in the Latin alphabet ROT-13 cipher uses the same operation to
+both encipher and decipher information.
+
+Both the ROT-13 on latin alphabet and the example ROT-15 with the partial
+nordic alphabet have the feature that ROT-13(ROT-13(string)) == string,
+which is partially useful in testing.
+"""
+
 def rot15(s):
-    """A nordic-friendly version of rot-13 encoding.
+    """A nordic characters-friendly version of rot-13 encoding.
 
         Parameters
         ----------
