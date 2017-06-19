@@ -32,7 +32,7 @@ def rot15(s):
         unicode str
             String rot-15 encoded and in lowercase
     """
-    chars = u"abcdefghijklnmopqrstuvwxyzåäöø"
+    chars = u"abcdefghijklmnopqrstuvwxyzåäöø"
     trans = chars[15:]+chars[:15]
     return unicode('').join(_lookup(c, chars, trans) for c in s )
 

@@ -10,12 +10,12 @@ SUCCESS_MESSAGE = "String is acceptable"
 MIN_PASSWORD_LENGTH = 6
 
 #note the ugly function name, we will refactor that in a minute
-def evaluate_string_for_stuff(foobar):
+def evaluate_password_quality(input_):
     """ Tests that the string is an acceptable password.
 
         Parameters
         ----------
-         foobar: str
+         input_: str
             the string to be tested
 
         Returns
@@ -23,13 +23,11 @@ def evaluate_string_for_stuff(foobar):
         int
             0 if string was an acceptable password, -1 if it was not
     """
-    string_acceptable = is_acceptable(foobar)
+    string_acceptable = is_acceptable(input_)
     #printing messages is typically not desirable behaviour, it will go away
     if string_acceptable:
-        print(SUCCESS_MESSAGE)
         return 0
     else:
-        print(ERROR_MESSAGE)
         return -1
 
 def is_acceptable(input_):
@@ -51,8 +49,59 @@ def is_acceptable(input_):
             True if string is acceptable, False if it is not
 
     """
-    has_numbers = any(char.isalnum() for char in input_[1:-1])
-    has_lower = any(char.islower() for char in input_[1:-1])
-    has_upper = any(char.isupper() for char in input_[1:-1])
+    numbers = has_numbers(input_)
+    lower = has_lower(input_)
+    upper = any(char.isupper() for char in input_[1:-1])
     has_length = len(input_) > MIN_PASSWORD_LENGTH
-    return has_numbers and has_lower and has_upper and has_length
+    return numbers and lower and upper and has_length
+
+def has_numbers(string_, ignore_chars=1):
+    """ Checks a string for numbers.
+    
+    Parameters
+    ----------
+    string_: str 
+        the string to test against
+    ignore_chars: int
+        ignore first *and* last n characters
+    Returns
+    -------
+    bool
+        whether or not the string contains one or more numbers
+
+    """
+    return  any(char.isdigit() for char in string_[ignore_chars:-ignore_chars])
+
+def has_lower(string_, ignore_chars=1):
+    """ Check a string for lower case characters.
+
+    Parameters
+    ----------
+    string_: str
+        the string to test against
+
+    Returns
+    -------
+    bool
+        whether or not the string contains one or more lower case characters
+
+
+    """
+    return  any(char.islower() for char in string_[ignore_chars:-ignore_chars])
+
+def has_upper(string_, ignore_chars=1):
+    """ Check a string for upper case characters.
+
+      Parameters
+      ----------
+      string_: str
+          the string to test against
+
+      Returns
+      -------
+      bool
+          whether or not the string contains one or more lower case characters
+
+
+      """
+    return any(char.islower() for char in string_[ignore_chars:-ignore_chars])
