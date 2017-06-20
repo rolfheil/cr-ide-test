@@ -9,5 +9,6 @@ def test_factorial():
     assert factorial(2) == 2
     assert factorial(3) == 6
     assert factorial(4) == 24
+    factorial(-1)
 
 
